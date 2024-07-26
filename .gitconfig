@@ -1,0 +1,72 @@
+[alias]
+	l = log --pretty=oneline -n 20 --graph --abbrev-commit # View abbreviated SHA, description, and history graph of the latest 20 commits
+	s = status -s # View the current working tree status using the short format
+	pr = !"pr() { git fetch origin pull/$1/head:pr-$1; git checkout pr-$1; }; pr" # Checkout a pull request from origin (of a github repository)
+	ca = !git add -A && git commit -av # Add all changes and commit them
+	amend = commit --amend --reuse-message=HEAD # Amend the last commit with the current index changes
+	graph = log --graph --color --pretty=format:"%C(yellow)%H%C(green)%d%C(reset)%n%x20%cd%n%x20%cn%x20(%ce)%n%x20%s%n" # View a pretty git log with a graph
+	dm = "!git branch --merged | grep -v '\\*' | xargs -n 1 git branch -d; git remote -v update -p" # a.k.a. ‘delete merged’
+	undo = !git reset HEAD~1 --mixed # Undo the last commit, leaving changes in the working directory
+ 	alias=!git config -l | grep ^alias | cut -c 7- | sort # List all aliases
+
+[apply]
+	whitespace = fix # Detect whitespace errors when applying a patch
+
+[core]
+	excludesfile = ~/.gitignore
+
+	# Treat spaces before tabs and all kinds of trailing whitespace as an error
+	# [default] trailing-space: looks for spaces at the end of a line
+	# [default] space-before-tab: looks for spaces before tabs at the beginning of a line
+	whitespace = space-before-tab,-indent-with-non-tab,trailing-space
+
+	# Make `git rebase` safer on OS X
+	# More info: <http://www.git-tower.com/blog/make-git-rebase-safe-on-osx/>
+	trustctime = false
+	autocrlf = input
+
+[diff]
+	renames = copies # Detect copies as well as renames
+
+[help]
+	autocorrect = 1 # Automatically correct and execute mistyped commands
+
+[merge]
+	log = true # Include summaries of merged commits in newly created merge commit messages
+
+[push]
+	autoSetupRemote = true # Use the given remote-tracking branch as the upstream branch
+
+[pull]
+	rebase = true
+
+[commit]
+	gpgsign = true
+
+[gpg]
+	format = ssh
+
+[gpg "ssh"]
+	program = /Applications/1Password.app/Contents/MacOS/op-ssh-sign
+
+[user]
+	email = 78575869+Olivier-OG@users.noreply.github.com
+	name = Olivier-OG
+	signingkey = ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDwNulCfykWZ6W5f8aIJGg+2e92fKEJxr1dEv2fmpr+EunZ1X/3r25qkkSwLczKBWX+6pIpaW5AE4j2nMNrn7ZwoKVLITC5X1KIGFc6sYOtBO866inPP6mkF6OmQuc+rKgdVYLQj+IMt+4KmzTvfZRq+ednaTaZCTTpzsnYs35dFp5ApaRcHUUkwC2c68saNzElbnuhgHoRm+0KZV+uA+z5bAfpA5NCcE72eb3s04m+SAUDmh1q7y+mtMBtdGVDAeB8iZv43k3L90nYgEroJBxtrUlyIslOuXDwvojtg3+Ih11v0jSV2qMJQoAX9/l0J1jobB+Ob0CHh4Szw0vmzeWJEp2v73XVpP9Lv1qPLfD2hiEUBTzJLFfdrj5+x1fv353ACNMPjKS3w+Da/iG2lrtbMAJOnpyQbR9ZqwGcwqBCC/s4PB7Jo2ZmuxbbUmSS9oXEa2SMHZNyuRmkzJ8q6QM7En7ci6ptJbuw9jgQX+vNLAkECpGJYHOy2Q4iHhnOCec=
+
+[color "branch"]
+	current = yellow reverse
+	local = yellow
+	remote = green
+
+[color "diff"]
+	meta = yellow bold
+	frag = magenta bold # line info
+	old = red # deletions
+	new = green # additions
+
+[color "status"]
+	added = yellow
+	changed = green
+	untracked = cyan
+

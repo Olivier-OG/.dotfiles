@@ -1,0 +1,14 @@
+.DS_Store
+
+.env
+
+.vscode
+.idea
+
+[Bb]in
+[Oo]ut
+
+[Oo]bj
+node_modules
+
+*.log
