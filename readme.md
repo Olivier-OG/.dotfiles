@@ -1,5 +1,7 @@
 # Dotfiles
 
+TODO: Create a script to execute these commands
+
 Start by cloning the repository:
 
 ```bash
