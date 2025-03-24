@@ -1,0 +1,7 @@
+font-family = JetBrains Mono
+font-size = 16
+theme = OneHalfDark
+
+adjust-cell-height = 20%
+
+keybind = cmd+shift+space=toggle_quick_terminal
