@@ -1,0 +1,10 @@
+"$schema" = 'https://starship.rs/config-schema.json'
+
+command_timeout = 1000
+
+[directory]
+truncation_length = 3
+truncate_to_repo = true
+
+[git_status]
+style = "bold purple"

@@ -1,23 +1,27 @@
-cask "spotify"
-cask "discord"
-
-cask "raycast"
-cask "notion"
-
+# Applications
 cask "1password"
 cask "1password-cli"
-
-cask "jetbrains-toolbox"
 cask "visual-studio-code"
-cask "ghostty"
-cask "podman-desktop"
-cask "macs-fan-control"
+cask "raycast"
+cask "spotify"
+cask "cmux"
+cask "aspire"
+cask "font-jetbrains-mono-nerd-font"
+cask "logi-options+"
 
-cask "dotnet-sdk"
-brew "nvm"
+# CLI tools
+brew "fnm"
+brew "starship"
+brew "gh"
 brew "pnpm"
-
-brew "tokei" # LoC Counter
-brew "zoxide" # Smarter cd
+brew "zoxide"
 brew "zsh-autosuggestions"
 brew "zsh-syntax-highlighting"
+brew "jq"
+brew "lazygit"
+brew "sqlcmd"
+
+brew "colima"
+brew "docker"
+brew "docker-buildx"
+brew "docker-compose"

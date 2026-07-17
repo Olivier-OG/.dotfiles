@@ -1,0 +1,30 @@
+alias ls="ls -Ghthr"
+alias ai="claude"
+
+command -v fnm    >/dev/null && eval "$(fnm env --use-on-cd)"
+
+command -v zoxide >/dev/null && eval "$(zoxide init zsh)"
+
+[[ -f /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh ]] \
+  && source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+
+[[ -f /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]] \
+  && source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+command -v starship >/dev/null && eval "$(starship init zsh)"
+
+# Add .NET Core SDK tools
+export PATH="$PATH:$HOME/.dotnet/tools"
+
+export PATH="$HOME/.local/bin:$PATH"
+
+# pnpm
+export PNPM_HOME="$HOME/Library/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME/bin:"*) ;;
+  *) export PATH="$PNPM_HOME/bin:$PATH" ;;
+esac
+# pnpm end
+
+# see frontend/.npmrc
+export BRYNTUM_NPM_TOKEN="{{ op://dotfiles/BRYNTUM_NPM_TOKEN/credential }}"
