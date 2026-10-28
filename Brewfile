@@ -7,7 +7,6 @@ cask "spotify"
 cask "cmux"
 cask "ghostty"
 cask "scroll-reverser"
-cask "tailscale-app"
 cask "font-jetbrains-mono-nerd-font"
 
 # CLI tools
@@ -19,6 +18,7 @@ brew "zoxide"
 brew "zsh-autosuggestions"
 brew "zsh-syntax-highlighting"
 brew "jq"
+brew "tailscale"
 brew "sqlcmd"
 
 brew "colima"
