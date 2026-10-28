@@ -24,6 +24,12 @@ fi
 log "Installing packages from Brewfile"
 brew bundle install --file="$DOTFILES/Brewfile"
 
+# tailscaled must run as root; start it at boot (prompts for sudo once)
+if ! launchctl print system/homebrew.mxcl.tailscale >/dev/null 2>&1; then
+  log "Starting Tailscale daemon"
+  sudo brew services start tailscale
+fi
+
 # 3. Link plain dotfiles; collect templates for step 4 ----------------------
 log "Linking dotfiles into \$HOME"
 mkdir -p "$HOME/.ssh" && chmod 700 "$HOME/.ssh"
@@ -71,3 +77,4 @@ log "Applying macOS defaults"
 
 log "Done."
 info "Restart your shell; log out/in for keyboard & Finder settings to fully apply."
+info "Run 'tailscale up' to join your tailnet (one-time browser login)."

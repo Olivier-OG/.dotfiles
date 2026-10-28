@@ -32,10 +32,25 @@ secret step with these instructions — finish the setup and re-run it.
 In order, idempotent (safe to re-run):
 
 1. Installs Homebrew
-2. `brew bundle` from the [Brewfile](Brewfile)
+2. `brew bundle` from the [Brewfile](Brewfile), then starts the Tailscale daemon as a
+   boot service (prompts for `sudo`)
 3. Symlinks the plain dotfiles under [`home/`](home/) into `$HOME`
 4. Renders the secret files (`*.tmpl`) from 1Password via `op inject`
 5. Applies macOS defaults ([macos.sh](macos.sh))
+
+### Tailscale
+
+The Brewfile installs the Tailscale CLI (no menu-bar app). `bootstrap.sh` starts its
+daemon; joining the tailnet is a one-time manual step since it needs a browser login:
+
+```bash
+tailscale up        # prints a login URL — open it and sign in
+tailscale status    # verify: lists the devices in the tailnet
+```
+
+Handy afterwards: `tailscale up --accept-routes` (use subnet routes advertised by other
+devices), `tailscale set --exit-node=<device>` (route all traffic via a device; empty to
+clear), `tailscale down` (disconnect, daemon keeps running).
 
 ## Layout
 
