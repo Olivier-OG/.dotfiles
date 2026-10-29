@@ -2,6 +2,7 @@
 cask "1password"
 cask "1password-cli"
 cask "visual-studio-code"
+cask "t3-code"
 cask "raycast"
 cask "spotify"
 cask "ghostty"
